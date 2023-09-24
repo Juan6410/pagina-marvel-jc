@@ -40,7 +40,11 @@
   
       <v-dialog v-model="dialog" transition="dialog-bottom-transition">
         <v-card style="background-color: rgb(32, 18, 18);">
-          <v-toolbar color="red" :title="selectedCharacter.name"></v-toolbar>
+            <v-toolbar color="red" :title="selectedCharacter.name">
+                <div style="background-color: red; border-radius: 5px; border-style: solid; border-color: black; margin-right: 1%;">
+                    <v-btn color="black" @click="dialog = false">Cerrar</v-btn>
+                </div>
+            </v-toolbar>
           <div style="background-color: rgb(0, 0, 0); margin: 1%; border-radius: 5px; border-color: rgb(255, 255, 255); border-style: solid;">
             <center>
             <v-img
@@ -59,42 +63,39 @@
             <p>{{ selectedCharacter.description }}</p>
           </v-card-text>
           <v-card-text v-else>
-            <p>N/A</p>
+            <p>No se encontro descripcion para este personaje</p>
           </v-card-text>
           </div>
           <div style="background-color: rgba(111, 0, 0, 0.766); margin: 0.7%; border-radius: 5px; color: white; border-color: rgb(255, 255, 255); border-style: solid;">
-          <h1>Comics</h1>
+          <h1 style="margin-left: 1%;">Comics</h1>
           <v-card-text>
             <p>{{ selectedCharacter.comics.available }}</p>
           </v-card-text>
           </div>
           <div style="background-color: rgba(111, 0, 0, 0.766); margin: 0.7%; border-radius: 5px; color: white; border-color: rgb(255, 255, 255); border-style: solid;">
-          <h1>Series</h1>
+          <h1 style="margin-left: 1%;">Series</h1>
           <v-card-text>
             <p>{{ selectedCharacter.series.available }}</p>
           </v-card-text>
           </div>
           <div style="background-color: rgba(111, 0, 0, 0.766); margin: 0.7%; border-radius: 5px; color: white; border-color: rgb(255, 255, 255); border-style: solid;">
-          <h1>Stories</h1>
+          <h1 style="margin-left: 1%;">Stories</h1>
           <v-card-text>
             <p>{{ selectedCharacter.stories.available }}</p>
           </v-card-text>
           </div>
           <div style="background-color: rgba(111, 0, 0, 0.766); margin: 0.7%; border-radius: 5px; color: white; border-color: rgb(255, 255, 255); border-style: solid;">
-          <h1>Events</h1>
+          <h1 style="margin-left: 1%;">Events</h1>
           <v-card-text>
             <p>{{ selectedCharacter.events.available }}</p>
           </v-card-text>
           </div>
           <div style="background-color: rgba(111, 0, 0, 0.766); margin: 0.7%; border-radius: 5px; color: white; border-color: rgb(255, 255, 255); border-style: solid;">
-          <h1>Outstanding Series</h1>
+          <h1 style="margin-left: 1%;">Outstanding Series</h1> 
           <v-card-text v-for="(series, index) in selectedCharacter.series.items" :key="index">
             <p v-if="index < 3">{{ series.name }}</p>
           </v-card-text>
           </div>
-          <v-card-actions class="justify-end">
-            <v-btn color="blue" @click="dialog = false">Close</v-btn>
-          </v-card-actions>
         </v-card>
       </v-dialog>
     </v-sheet>
@@ -129,7 +130,7 @@
   
   const loadCharacters = async () => {
     const url =
-      "https://gateway.marvel.com/v1/public/characters?ts=1&apikey=064bf7f3a8d51ea6b15f4e755f0c78e6&hash=93f0f37ca0d13f65d78f0eea478d4fc0&limit=60";
+      "https://gateway.marvel.com/v1/public/characters?ts=1&apikey=064bf7f3a8d51ea6b15f4e755f0c78e6&hash=93f0f37ca0d13f65d78f0eea478d4fc0&limit=68";
     const { data } = await axios.get(url);
     characters.value = data.data.results;
   };
