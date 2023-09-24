@@ -22,57 +22,76 @@
               width="100%"
               cover
             ></v-img>
-            <h2 style="color: aliceblue; 
+            <h2 style="color: rgb(255, 255, 255); 
             margin-bottom: 4%; 
             background-color: rgba(0, 0, 0, 0.565); 
-            border-radius: 5px; text-align: center;" class="white--text">{{ item.name }}</h2>
+            border-radius: 5px; 
+            text-align: center; 
+            border-color: rgb(0, 0, 0); border-style: double;" class="white--text">{{ item.name }}</h2>
             <v-btn
               color="red"
               @click="showDetails(item)"
-              class="white--text"
-            >
-              See more
+              class="white--text">
+              Ver mas
             </v-btn>
           </v-card>
         </v-col>
       </v-row>
   
       <v-dialog v-model="dialog" transition="dialog-bottom-transition">
-        <v-card>
+        <v-card style="background-color: rgb(32, 18, 18);">
           <v-toolbar color="red" :title="selectedCharacter.name"></v-toolbar>
-          <v-img
-            :src="`${selectedCharacter.thumbnail.path}/detail.${selectedCharacter.thumbnail.extension}`"
-            height="200px"
-            width="100%"
-            cover
-          ></v-img>
-          <h1>Description</h1>
+          <div style="background-color: rgb(0, 0, 0); margin: 1%; border-radius: 5px; border-color: rgb(255, 255, 255); border-style: solid;">
+            <center>
+            <v-img
+                :src="`${selectedCharacter.thumbnail.path}/detail.${selectedCharacter.thumbnail.extension}`"
+                height="30%"
+                width="30%"
+                cover
+                style="margin: 1%;"
+            ></v-img>
+            <h1 style="color: aliceblue;">{{ selectedCharacter.name }}</h1>
+            </center>
+          </div>
+          <div style="background-color: rgba(111, 0, 0, 0.766); margin: 0.7%; border-radius: 5px; color: white; border-color: rgb(255, 255, 255); border-style: solid;">
+          <h1 style="margin-left: 1%;">Description</h1>
           <v-card-text v-if="selectedCharacter.description !== ''">
             <p>{{ selectedCharacter.description }}</p>
           </v-card-text>
           <v-card-text v-else>
             <p>N/A</p>
           </v-card-text>
+          </div>
+          <div style="background-color: rgba(111, 0, 0, 0.766); margin: 0.7%; border-radius: 5px; color: white; border-color: rgb(255, 255, 255); border-style: solid;">
           <h1>Comics</h1>
           <v-card-text>
             <p>{{ selectedCharacter.comics.available }}</p>
           </v-card-text>
+          </div>
+          <div style="background-color: rgba(111, 0, 0, 0.766); margin: 0.7%; border-radius: 5px; color: white; border-color: rgb(255, 255, 255); border-style: solid;">
           <h1>Series</h1>
           <v-card-text>
             <p>{{ selectedCharacter.series.available }}</p>
           </v-card-text>
+          </div>
+          <div style="background-color: rgba(111, 0, 0, 0.766); margin: 0.7%; border-radius: 5px; color: white; border-color: rgb(255, 255, 255); border-style: solid;">
           <h1>Stories</h1>
           <v-card-text>
             <p>{{ selectedCharacter.stories.available }}</p>
           </v-card-text>
+          </div>
+          <div style="background-color: rgba(111, 0, 0, 0.766); margin: 0.7%; border-radius: 5px; color: white; border-color: rgb(255, 255, 255); border-style: solid;">
           <h1>Events</h1>
           <v-card-text>
             <p>{{ selectedCharacter.events.available }}</p>
           </v-card-text>
+          </div>
+          <div style="background-color: rgba(111, 0, 0, 0.766); margin: 0.7%; border-radius: 5px; color: white; border-color: rgb(255, 255, 255); border-style: solid;">
           <h1>Outstanding Series</h1>
           <v-card-text v-for="(series, index) in selectedCharacter.series.items" :key="index">
             <p v-if="index < 3">{{ series.name }}</p>
           </v-card-text>
+          </div>
           <v-card-actions class="justify-end">
             <v-btn color="blue" @click="dialog = false">Close</v-btn>
           </v-card-actions>
