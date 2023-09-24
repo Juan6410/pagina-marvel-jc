@@ -33,15 +33,6 @@
         </div>
     </center>
   </div>
-    <!--<div style="background-color: white;">
-      <nuxt-link to="/characters" style="font-weight: 500;
-        font-family: Didot, serif;
-        font-size: xx-large;
-        text-align: center;">
-  
-        character catalog 
-      </nuxt-link>
-    </div> -->
-    </v-sheet>
+  </v-sheet>
   
 </template>
