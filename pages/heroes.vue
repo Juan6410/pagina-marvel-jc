@@ -92,8 +92,13 @@
           </div>
           <div style="background-color: rgba(111, 0, 0, 0.766); margin: 0.7%; border-radius: 5px; color: white; border-color: rgb(255, 255, 255); border-style: solid;">
           <h1 style="margin-left: 1%;">Outstanding Series</h1> 
-          <v-card-text v-for="(series, index) in selectedCharacter.series.items" :key="index">
-            <p v-if="index < 3">{{ series.name }}</p>
+          <v-card-text v-if="selectedCharacter.series.items.length > 0">
+          <p v-for="(series, index) in selectedCharacter.series.items" :key="index" v-if="index < 3">
+          {{ series.name }}
+          </p>
+          </v-card-text>
+          <v-card-text v-else>
+            <p>No hay Outstanding series para este personaje</p>
           </v-card-text>
           </div>
         </v-card>
